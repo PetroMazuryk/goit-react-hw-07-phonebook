@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import { createRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import styles from './PhoneTitle.module.scss';
+import styles from './PhoneTitle.module.css';
 
 export const PhoneTitle = () => {
   const itemRef = createRef(null);

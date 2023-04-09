@@ -3,10 +3,10 @@ import { PhonebookForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { PhoneTitle } from './PhoneTitle/PhoneTitle';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 export const App = () => {
-  const contacts = useSelector(state => state.contacts);
+  // const contacts = useSelector(state => state.contacts);
 
   return (
     <>
@@ -20,11 +20,12 @@ export const App = () => {
       </Section>
 
       <Section title="Contact List">
-        {contacts.length ? (
+        {/* {contacts.length ? (
           <ContactList />
         ) : (
           <h2 style={{ textAlign: 'center' }}>There is no added contacts</h2>
-        )}
+        )} */}
+        <ContactList />
       </Section>
     </>
   );

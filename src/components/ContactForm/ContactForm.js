@@ -1,15 +1,17 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addContact } from 'redux/contactSlice';
+// import { addContact } from 'redux/slices/contactSlice';
+import { addContact } from 'redux/operations/operations';
 import { useState } from 'react';
-import { nanoid } from 'nanoid';
+
 import { Notify } from 'notiflix';
+import { selectAllContacts } from 'redux/selectors/selectors';
 import { Button, Form, FormWrapper, InputForm } from './ContactForm.styled';
 
-export const PhonebookForm = () => {
+const PhonebookForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(selectAllContacts);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -26,7 +28,7 @@ export const PhonebookForm = () => {
 
   const handleFormSubmit = event => {
     event.preventDefault();
-    const contact = { id: nanoid(), name, number };
+    const contact = { name, number };
 
     const alreadyExists = contacts.findIndex(item => {
       const name = item.name.toLowerCase();
@@ -85,3 +87,5 @@ PhonebookForm.propTypes = {
   ),
   addContact: PropTypes.func,
 };
+
+export { PhonebookForm };

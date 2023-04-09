@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { Button, Item, Text } from './ContactItem.styled';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contactSlice';
+
+import { deleteContact } from 'redux/operations/operations';
 
 export const ContactItem = ({ contact }) => {
   const { id, name, number } = contact;
-  console.log(id);
 
   const dispatch = useDispatch();
   return (
@@ -27,5 +27,4 @@ ContactItem.propTypes = {
     name: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
   }),
-  onDelete: PropTypes.func,
 };

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { FilterWrapper, FilterInput, Button } from './Filter.styled';
-import { filterContacts } from 'redux/filterSlice';
+import { filterContacts } from 'redux/slices/filterSlice';
 
 export const Filter = () => {
   const filter = useSelector(state => state.filter);
