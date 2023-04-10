@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
-// import { addContact } from 'redux/slices/contactSlice';
 import { addContact } from 'redux/operations/operations';
 import { useState } from 'react';
 

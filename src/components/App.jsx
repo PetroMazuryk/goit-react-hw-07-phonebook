@@ -3,11 +3,21 @@ import { PhonebookForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { PhoneTitle } from './PhoneTitle/PhoneTitle';
-// import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchContacts } from 'redux/operations/operations';
+
+import { selectIsLoading, selectError } from 'redux/selectors/selectors';
+import { Spinner } from './Spinner/Spinner';
 
 export const App = () => {
-  // const contacts = useSelector(state => state.contacts);
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
   return (
     <>
       <PhoneTitle />
@@ -18,14 +28,13 @@ export const App = () => {
       <Section title="Filter contacts">
         <Filter />
       </Section>
-
+      {isLoading && <Spinner />}
       <Section title="Contact List">
-        {/* {contacts.length ? (
+        {!error ? (
           <ContactList />
         ) : (
-          <h2 style={{ textAlign: 'center' }}>There is no added contacts</h2>
-        )} */}
-        <ContactList />
+          <h2 style={{ textAlign: 'center' }}>{error}</h2>
+        )}
       </Section>
     </>
   );
